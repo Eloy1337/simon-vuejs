@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Simon Vue js</title>
+</head>
+
+<body>
+	<h1 class="title">Simon Says</h1>
+	<div class="wrapper" id="app">
+		<div class="play">
+			<ul class="list">
+				<li :class="{list__item: true, red: true, light: light === 1}" data-tile="1"
+					@click="registerClick($event)">
+				</li>
+				<li :class="{list__item: true, blue: true, light: light === 2}" data-tile="2"
+					@click="registerClick($event)">
+				</li>
+				<li :class="{list__item: true, yellow: true, light: light === 3}" data-tile="3"
+					@click="registerClick($event)"></li>
+				<li :class="{list__item: true, green: true, light: light === 4}" data-tile="4"
+					@click="registerClick($event)">
+				</li>
+			</ul>
+		</div>
+		<div class="game">
+			<div class="game__info">
+				<h2>Round: {{ round }}</h2>
+				<button class="game__start" @click="start()">Start</button>
+				<p v-if="!active && round != 0">Sorry, you lost after {{ round }} rounds!</p>
+			</div>
+			<div class="game__options">
+				<h2>Game Options:</h2>
+				<label>
+					<input @click="changeMode($event)" type="radio" name="mode" value="easy" :disabled="active"
+						checked>Easy
+				</label><br>
+				<label>
+					<input @click="changeMode($event)" type="radio" name="mode" value="middle" :disabled="active">Middle
+				</label><br>
+				<label>
+					<input @click="changeMode($event)" type="radio" name="mode" value="hard" :disabled="active">Hard
+				</label>
+			</div>
+		</div>
+		<div class="sounds">
+			<audio autoplay v-if="sound != 0">
+				<source src="sounds/1.mp3" type="audio/mp3" v-if="sound == 1" />
+				<source src="sounds/2.mp3" type="audio/mp3" v-if="sound == 2" />
+				<source src="sounds/3.mp3" type="audio/mp3" v-if="sound == 3" />
+				<source src="sounds/4.mp3" type="audio/mp3" v-if="sound == 4" />
+			</audio>
+		</div>
+	</div>
+	<!-- <script src="https://unpkg.com/vue@next"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
