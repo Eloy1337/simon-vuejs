@@ -76,13 +76,13 @@ const app = new Vue({
 			this.light = tile;
 			setTimeout(() => {
 				this.light = 0;
-			}, 350);
+			}, 300);
 		},
 		playSound(tile) {
 			this.sound = tile;
 			setTimeout(() => {
 				this.sound = 0;
-			}, 350);
+			}, 300);
 		},
 		randomNumber() {
 			return Math.floor((Math.random() * 4) + 1);
