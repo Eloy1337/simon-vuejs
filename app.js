@@ -1,16 +1,14 @@
 const app = new Vue({
 	el: '#app',
-	data() {
-		return {
-			sequence: [], // вся очередь
-			copy: [], // очередь текущего раунда
-			round: 0, // номер раунда
-			active: false, // идет ли игра
-			activateSimonBoard: false, // активны ли кнопки
-			light: 0, // номер загорающейся кнопки
-			sound: 0, // номер кнопки, которая издает звук
-			speed: 1500 // скорость по умолчанию
-		}
+	data: {
+		sequence: [], // вся очередь
+		copy: [], // очередь текущего раунда
+		round: 0, // номер раунда
+		active: false, // идет ли игра
+		activateSimonBoard: false, // активны ли кнопки
+		light: 0, // номер загорающейся кнопки
+		sound: 0, // номер кнопки, которая издает звук
+		speed: 1500 // скорость по умолчанию
 	},
 	methods: {
 		// изменение скорости по выбранному уровню сложности
@@ -76,13 +74,13 @@ const app = new Vue({
 			this.light = tile;
 			setTimeout(() => {
 				this.light = 0;
-			}, 350);
+			}, 300);
 		},
 		playSound(tile) {
 			this.sound = tile;
 			setTimeout(() => {
 				this.sound = 0;
-			}, 350);
+			}, 300);
 		},
 		randomNumber() {
 			return Math.floor((Math.random() * 4) + 1);
